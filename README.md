@@ -1,5 +1,15 @@
 # JavaScript
 
+
+### value
+
+value recoge el valor de un html
+
+```js
+
+    names=document.getElementById("tuNombre").value
+ ```
+
 ## Events
 
 ### blur
