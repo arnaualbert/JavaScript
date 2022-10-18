@@ -20,14 +20,18 @@ $username= $entrada->{'username'};
 //var_dump($name);
 $password= $entrada->{'pwd'};
 //var_dump($course);
-
+if ($username == "arnau" AND $password == "arnau2003"){
+  echo json_encode("Admin");
+}else{
+  echo json_encode("User");
+}
 //codigo de PHP hago lo que sea y al final necesito
 //enviar el siguiente array
-$array=["dawbio2", "daw2"];
+// $array=["dawbio2", "daw2"];
 
 
 //envio del resultado imprimiéndolo: variable PHP a JSON
-echo json_encode($array);
+
 
 
 

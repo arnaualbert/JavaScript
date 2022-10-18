@@ -10,17 +10,56 @@
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 
-<body onload="mueveReloj()">
-    <!-- <div>
-        <h1>AIR ARNAU</h1>
-    </div> -->
+<!-- <script>
+    function setCookie(cname,cvalue,exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    function checkCookie() {
+      let user = getCookie("username");
+      if (user != "") {
+        alert("Welcome again " + user);
+      } else {
+         user = prompt("Please enter your name:","");
+         if (user != "" && user != null) {
+           setCookie("username", user, 30);
+         }
+      }
+    }
+    </script> -->
+
+
+<!-- onload="mueveReloj()" -->
+
+
+<body  onload="mueveReloj()">
     <ul id="nav">
         <li>
             <a href="#header"><button id="bt1">LOGIN</button></a>
         </li>
-        <!-- <li>
-            <a href="#section-1" id="hora"></a>
-        </li> -->
+
+        <li>
+            <p id="fecha"></p>
+        </li>
         <li>
             <a href="#section-2">
                 <form name="form_reloj">
@@ -54,13 +93,12 @@
                 </div>
             </div>
             <button type="button" class="btn btn-info" id="btRegistro">Registro</button>
+            <button type="button" class="btn btn-info" id="btlogin">Login</button>
             <!--boto deshabilitat amb disabled-->
-
-
         </form>
     </div>
     <div id="response">
-        
+
     </div>
 
 </body>
