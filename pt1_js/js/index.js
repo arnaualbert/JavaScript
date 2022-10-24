@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function(){
     var now = today.toLocaleDateString('en-GB');
 
     document.getElementById("fecha").innerHTML=now
-
+    document.getElementById("vuelos").style.display="none";
     document.getElementById("divlogin").style.display="none";
     // var today = new Date();
     // // // obtener la fecha y la hora
@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function(){
     // document.getElementById("hora").innerHTML=now;
     document.getElementById("bt1").addEventListener("click",function(){
         document.getElementById("divlogin").style.display="block";
+        document.getElementById("vuelos").style.display="none";
+        document.getElementById("info").style.display="none";
     })
     document.getElementById("btRegistro").addEventListener("click",function(){
 
@@ -37,13 +39,15 @@ document.addEventListener("DOMContentLoaded", function(){
                 //xhr.response es un JSON que viene desde PHP
                 let responseServer= JSON.parse(xhr.response);//reconvertirlo/parsearlo a variable JS
                 document.getElementById("response").innerHTML= responseServer;
+                if (responseServer=="Welcome Admin"){checkCookie("cookie",username);};
               }
-    
+        document.getElementById("divlogin").style.display="none";
+        document.getElementById("vuelos").style.display="block";
     
     
         }
         // document.getElementById("fecha").innerHTML=now;
-        window.location = "./vuelos.html"
+      // window.location = "./vuelos.html"
     })
     document.getElementById("btlogin").addEventListener("click",function(){
 
@@ -67,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 //xhr.response es un JSON que viene desde PHP
                 let responseServer= JSON.parse(xhr.response);//reconvertirlo/parsearlo a variable JS
                 document.getElementById("response").innerHTML= responseServer;
-                if (responseServer=="Bienvenido"){checkCookie("cookie",username);};
+                // if (responseServer=="Bienvenido"){checkCookie("cookie",username);};
               }
     
     
@@ -76,6 +80,54 @@ document.addEventListener("DOMContentLoaded", function(){
         // document.getElementById("fecha").innerHTML=now;
 
     })
+
+// aqui cambia todo
+
+
+
+document.getElementById("btvuelo").addEventListener("click",function(){
+
+  var origen = document.getElementById("origen").value;
+  var destino = document.getElementById("destino").value;
+
+  var salida = document.getElementById("salida").value;
+  var vuelta = document.getElementById("vuelta").value;
+
+  var pasajeros = document.getElementById("pasajeros").value;;
+
+  let infos={
+      origen:origen,
+      destino:destino,
+      salida:salida,
+      vuelta:vuelta,
+      pasajeros:pasajeros
+  };
+  
+  console.log(infos)
+  //enviar aquest objecte al servidor:
+  let xhr=new XMLHttpRequest();
+  xhr.open("POST", "./php/vuelos.php");//obrir connexio
+  xhr.send(JSON.stringify(infos));//enviament de dades: objeto a JSON antes del envio
+  xhr.onload=function(){//esperar a rebre dades
+
+      if (xhr.status != 200) { // analiza el estado HTTP de la respuesta
+          alert(`Error ${xhr.status}: ${xhr.statusText}`); // ej. 404: No encontrado
+        } else { // muestra el resultado
+          //alert(`Hecho, obtenidos ${xhr.response.length} bytes`); // Respuesta del servidor
+          //xhr.response es un JSON que viene desde PHP
+          let responseServer= JSON.parse(xhr.response);//reconvertirlo/parsearlo a variable JS
+          document.getElementById("info").innerHTML= responseServer;
+        }
+
+
+
+  }
+  // document.getElementById("fecha").innerHTML=now;
+  document.getElementById("info").style.display="block";
+
+})
+
+
     });
 
 

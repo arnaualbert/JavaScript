@@ -16,6 +16,12 @@ $destino= $entrada->{'destino'};
 $pasajeros= $entrada->{'pasajeros'};
 
 
-if ($origen == "Barcelona" AND $destino == "Madrid"){
+
+
+if ($origen == "Barcelona" AND $destino == "Madrid" AND $pasajeros == "2"){
+    echo json_encode("El preu se de : 110€ \n La duracio es de 1h 7min");
+}elseif ($origen == "Barcelona" AND $destino == "Madrid"  AND $pasajeros == "1"){
     echo json_encode("El preu se de : 55€ \n La duracio es de 1h 7min");
+}elseif ($origen == "Barcelona" AND $destino == "Madrid"  AND $pasajeros == "3"){
+    echo json_encode("El preu se de : 165€ \n La duracio es de 1h 7min");
 }

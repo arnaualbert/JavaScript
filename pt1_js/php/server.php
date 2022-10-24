@@ -16,15 +16,36 @@ let user2={ //objecte JS
       curs: course  
     };
 */
-$username= $entrada->{'username'};
+$nom_user = $entrada->{'username'};
 //var_dump($name);
-$password= $entrada->{'pwd'};
+$contra = $entrada->{'pwd'};
 //var_dump($course);
-if ($username == "arnau" AND $password == "arnau2003"){
-  echo json_encode("Admin");
-}else{
-  echo json_encode("User");
+
+$usuarios = array(
+  "Arnau" => 456,
+  "Pep" => 123,
+);
+
+$message="No registrado";
+if(array_key_exists($nom_user,$usuarios)){
+  if($usuarios[$nom_user]==$contra){
+    $message = "Welcome Admin";
+  };
 }
+echo json_encode($message)
+
+// foreach($usuarios as $username => $password){
+//   if ($username == $nom_user AND $password == $contra){
+//     echo json_encode("Admin");
+//     break;
+//   }elseif($username == $nom_user AND $password == $contra){
+//     echo json_encode("User");
+//     break;
+//   }else{
+//     echo json_encode("No esta registrado");
+//   }
+// }
+
 //codigo de PHP hago lo que sea y al final necesito
 //enviar el siguiente array
 // $array=["dawbio2", "daw2"];
