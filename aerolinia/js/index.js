@@ -100,6 +100,39 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("divregistro").style.display = "none";
         }
     })
+    document.getElementById("btvuelos").addEventListener("click", function () {
+        var origen = document.getElementById("origen").value;
+        var destino = document.getElementById("destino").value;
+        var salida = document.getElementById("salida").value;
+        var vuelta = document.getElementById("vuelta").value;
+        var pasajeros = document.getElementById("pasajeros").value;
+        let viaje = {
+            origen: origen,
+            destino: destino,
+            salida: salida,
+            vuelta: vuelta,
+            pasajeros: pasajeros
+        };
+        console.log(viaje);
+        if (origen == "" || destino == "" || salida == "" || vuelta == "" || pasajeros == ""){
+            alert("rellena todos los campos")
+        }else if (origen == destino){alert("el orige y el destino son el mismo")}else{alert("buscando viajes")}
+        // let xhr = new XMLHttpRequest();
+        // xhr.open("POST", "./php/vuelo.php");//obrir connexio
+        // xhr.send(JSON.stringify(user2));//enviament de dades: objeto a JSON antes del envio
+        // xhr.onload = function () {//esperar a rebre dades
+
+        //     if (xhr.status != 200) { // analiza el estado HTTP de la respuesta
+        //         alert(`Error ${xhr.status}: ${xhr.statusText}`); // ej. 404: No encontrado
+        //     } else { // muestra el resultado
+        //         //alert(`Hecho, obtenidos ${xhr.response.length} bytes`); // Respuesta del servidor
+        //         //xhr.response es un JSON que viene desde PHP
+        //         let responseServer = JSON.parse(xhr.response);//reconvertirlo/parsearlo a variable JS
+        //         document.getElementById("response").innerHTML = responseServer;
+        //         // if (responseServer == "Welcome Admin") { checkCookie("cookie", username); };
+        //     }
+        // }
+    })
 
 });
 
