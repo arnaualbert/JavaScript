@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 if (responseServer=="Welcome Admin"){checkCookie("cookie",username);};
               }
         document.getElementById("divlogin").style.display="none";
+        document.getElementById("divlogin").style.display="none";
         document.getElementById("vuelos").style.display="block";
     
     
