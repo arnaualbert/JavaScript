@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("divvuelos").style.display = "none";
 
+    document.getElementById("bt3").style.display = "none";
+
     // document.getElementById("origen").
 
     document.getElementById("bt3").addEventListener("click", function () {
@@ -29,15 +31,23 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("divvuelos").style.display = "none";
 
         document.getElementById("response").style.display = "none";
+
+        document.getElementById("bt3").style.display="none";
+
+        document.getElementById("bt2").style.display="block";
+
+        document.getElementById("bt1").style.display="block";
     })
 
     document.getElementById("bt1").addEventListener("click", function () {
         document.getElementById("divlogin").style.display = "block";
         document.getElementById("divregistro").style.display = "none";
+        document.getElementById("divvuelos").style.display = "none";
     })
 
     document.getElementById("bt2").addEventListener("click", function () {
         document.getElementById("divlogin").style.display = "none";
+        document.getElementById("divvuelos").style.display = "none";
         document.getElementById("divregistro").style.display = "block";
     })
 
@@ -64,8 +74,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("response").innerHTML = responseServer;
                 if (responseServer == "Welcome Admin") {
                     checkCookie("galeta", username);
+                    document.getElementById("bt1").style.display="none";
+                    document.getElementById("bt2").style.display="none";
                     document.getElementById("divlogin").style.display = "none";
                     document.getElementById("divvuelos").style.display = "block";
+                    document.getElementById("bt3").style.display="block";
                     loadoptions();
                 };
             }
@@ -101,6 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     })
     document.getElementById("btvuelos").addEventListener("click", function () {
+        document.getElementById("response").style.display="block";
         var origen = document.getElementById("origen").value;
         var destino = document.getElementById("destino").value;
         var salida = document.getElementById("salida").value;
@@ -114,24 +128,24 @@ document.addEventListener("DOMContentLoaded", function () {
             pasajeros: pasajeros
         };
         console.log(viaje);
-        if (origen == "" || destino == "" || salida == "" || vuelta == "" || pasajeros == ""){
-            alert("rellena todos los campos")
-        }else if (origen == destino){alert("el orige y el destino son el mismo")}else{alert("buscando viajes")}
-        // let xhr = new XMLHttpRequest();
-        // xhr.open("POST", "./php/vuelo.php");//obrir connexio
-        // xhr.send(JSON.stringify(user2));//enviament de dades: objeto a JSON antes del envio
-        // xhr.onload = function () {//esperar a rebre dades
+        // if (origen == "" || destino == "" || salida == "" || vuelta == "" || pasajeros == ""){
+        //     alert("rellena todos los campos")
+        // }else if (origen == destino){alert("el orige y el destino son el mismo")}else{alert("buscando viajes")}
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "./php/buscar.php");//obrir connexio
+        xhr.send(JSON.stringify(viaje));//enviament de dades: objeto a JSON antes del envio
+        xhr.onload = function () {//esperar a rebre dades
 
-        //     if (xhr.status != 200) { // analiza el estado HTTP de la respuesta
-        //         alert(`Error ${xhr.status}: ${xhr.statusText}`); // ej. 404: No encontrado
-        //     } else { // muestra el resultado
-        //         //alert(`Hecho, obtenidos ${xhr.response.length} bytes`); // Respuesta del servidor
-        //         //xhr.response es un JSON que viene desde PHP
-        //         let responseServer = JSON.parse(xhr.response);//reconvertirlo/parsearlo a variable JS
-        //         document.getElementById("response").innerHTML = responseServer;
-        //         // if (responseServer == "Welcome Admin") { checkCookie("cookie", username); };
-        //     }
-        // }
+            if (xhr.status != 200) { // analiza el estado HTTP de la respuesta
+                alert(`Error ${xhr.status}: ${xhr.statusText}`); // ej. 404: No encontrado
+            } else { // muestra el resultado
+                //alert(`Hecho, obtenidos ${xhr.response.length} bytes`); // Respuesta del servidor
+                //xhr.response es un JSON que viene desde PHP
+                let responseServer = JSON.parse(xhr.response);//reconvertirlo/parsearlo a variable JS
+                document.getElementById("response").innerHTML = responseServer;
+                // if (responseServer == "Welcome Admin") { checkCookie("cookie", username); };
+            }
+        }
     })
 
 });
@@ -205,6 +219,29 @@ const borrarcookie = (cookie) => {
 //     })
 // }
 
+// function loadoptions(){
+//     let request = new XMLHttpRequest()
+//     request.open("GET","./php/vuelos.php");
+//     request.send();
+//     request.onload = function (){
+//         var data= JSON.parse(request.response);
+
+//         for(var i=0;i < data.length;i++){
+//             var option = document.createElement("option");
+//             option.value = i;
+//             option.innerHTML = data[i];
+//             document.getElementById("origen").appendChild(option)
+//         };
+
+//         for(var i=0;i < data.length;i++){
+//             var option = document.createElement("option");
+//             option.value = i;
+//             option.innerHTML = data[i];
+//             document.getElementById("destino").appendChild(option)
+//         };
+//     }
+// }
+
 function loadoptions(){
     let request = new XMLHttpRequest()
     request.open("GET","./php/vuelos.php");
@@ -214,14 +251,14 @@ function loadoptions(){
 
         for(var i=0;i < data.length;i++){
             var option = document.createElement("option");
-            option.value = i;
+            option.value = data[i];
             option.innerHTML = data[i];
             document.getElementById("origen").appendChild(option)
         };
 
         for(var i=0;i < data.length;i++){
             var option = document.createElement("option");
-            option.value = i;
+            option.value = data[i];
             option.innerHTML = data[i];
             document.getElementById("destino").appendChild(option)
         };
