@@ -11,6 +11,9 @@
 </head>
 
 <body onload="mueveReloj()">
+    <div id="Black">
+        <h2 id="white">Air Proven</h2>
+    </div>
     <ul id="nav">
         <li>
             <a href="#header"><button id="bt1">LOGIN</button></a>
@@ -27,8 +30,7 @@
         <li>
             <a href="#section-2">
                 <form name="form_reloj">
-                    <input readonly="readonly" type="text" name="reloj" size="10"
-                        style="background-color : burlywood; color : black; font-family : Verdana, Arial, Helvetica; font-size : 8pt; text-align : center;">
+                    <input readonly="readonly" type="text" name="reloj" size="10" style="background-color : burlywood; color : black; font-family : Verdana, Arial, Helvetica; font-size : 8pt; text-align : center;">
                 </form>
             </a>
         </li>
@@ -93,29 +95,63 @@
         </form>
     </div>
     <div id="divvuelos">
+        <!-- <div> -->
         <label for="">Origen</label>
-        <select name="" id="origen" required></select>
+        <select name="" id="origen" required></select><br>
+        <!-- </div> -->
+        <!-- <div> -->
         <label for="">Destino</label>
-        <select name="" id="destino" required></select>
-        <label for="">Salida</label>
-        <input id="salida" type='date' min="fecha" max='2023-05-01'></input>
-        <label for="">Vuelta</label>
-        <input id="vuelta" type='date' min="fecha" max='2023-05-01'></input>
+        <select name="" id="destino" required></select><br>
+        <!-- </div>
+        <div> -->
+        <label for="">Salida</label><br>
+        <input id="salida" type='date' min="fecha" max='2023-05-01'></input><br>
+        <!-- </div>
+        <div> -->
+        <label for="">Vuelta</label><br>
+        <input id="vuelta" type='date' min="fecha" max='2023-05-01'></input><br>
+        <!-- </div>
+        <div> -->
         <label for="">Billetes</label>
         <select name="" id="pasajeros">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
-        </select>
+            </select><br>
+        <!-- </div> -->
         <button type="button" id="btvuelos">Buscar Vuelos</button>
     </div>
     <div id="buscar">
-        <div id="info"></div> 
+        <div id="info"></div><br>
         <!-- esto tiene la info del vuelo  -->
-        <label for="">Salida</label>
-        <select name="" id="salidas" required></select>
-        <p id="tt"></p> 
-        <button id="comprar">Comprar</button>
+        <label for="">Salida</label><br>
+        <select name="" id="salidas" required></select><br>
+        <label for="">Vuelta</label><br>
+        <select name="" id="vueltas" required></select><br>
+        <p id="tt"></p>
+        <button type="button" id="btcomprar">Comprar</button>
+    </div>
+    <div id="usuario">
+        <form action="">
+            <label for="">Nom</label><br>
+            <input readonly="readonly" type="text" id="nombrerelleno"><br>
+            <label for="">DNI</label><br>
+            <input type="text" id="dni"><br>
+            <label for="">Telefon</label><br>
+            <input type="text" id="telefono"><br>
+            <label for="">Correo</label><br>
+            <input type="text" id="correo"><br>
+            <button type="button" id="btcontinuar">Continuar</button>
+        </form>
+    </div>
+    <div id="datos">
+        <p id="nomini"></p>
+        <p id="mobil"></p>
+        <p id="dnie"></p>
+        <p id="email"></p>
+        <p id="anada"></p>
+        <p id="tornada"></p>
+        <button id="print">Print Page</button>
     </div>
 </body>
 
