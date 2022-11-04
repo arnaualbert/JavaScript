@@ -56,40 +56,4 @@ console.log(cat);
 console.log(typeof cat);
 console.log(mycat);
 console.log(typeof mycat);
-
-
-
-// comunicacio amb el servidor
-
-
-document.getElementById("valida").addEventListener("click",function(){
-
-    var name= document.getElementById("myname").value;
-    var course= document.getElementById("mycourse").value;
-    let user2={
-        nom:name,
-        curso:course
-    };
-    console.log(user2)
-
-
-    // ENVIAR OBJECTE SERVIDOR
-    let xhr= new XMLHttpRequest();
-    xhr.open("POST","./php/server.php");//obrir conexio open tiene 2 parametros ("GET"o"POST")
-    xhr.send(JSON.stringify(user2));// envio de dades
-    xhr.onload=function(){//esperar a rebre dades
-
-        if (xhr.status != 200) { // analiza el estado HTTP de la respuesta
-            alert(`Error ${xhr.status}: ${xhr.statusText}`); // ej. 404: No encontrado
-          } else { // muestra el resultado
-            //alert(`Hecho, obtenidos ${xhr.response.length} bytes`); // Respuesta del servidor
-            //xhr.response es un JSON que viene desde PHP
-            let responseServer= JSON.parse(xhr.response);//reconvertirlo/parsearlo a variable JS
-            document.getElementById("response").innerHTML= responseServer;
-          }
-
-
-
-    }
-})
 });

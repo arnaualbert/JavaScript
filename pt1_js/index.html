@@ -10,58 +10,18 @@
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 
-<!-- <script>
-    function setCookie(cname,cvalue,exdays) {
-      const d = new Date();
-      d.setTime(d.getTime() + (exdays*24*60*60*1000));
-      let expires = "expires=" + d.toUTCString();
-      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-    }
-
-    function getCookie(cname) {
-      let name = cname + "=";
-      let decodedCookie = decodeURIComponent(document.cookie);
-      let ca = decodedCookie.split(';');
-      for(let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') {
-          c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-          return c.substring(name.length, c.length);
-        }
-      }
-      return "";
-    }
-
-    function checkCookie() {
-      let user = getCookie("username");
-      if (user != "") {
-        alert("Welcome again " + user);
-      } else {
-         user = prompt("Please enter your name:","");
-         if (user != "" && user != null) {
-           setCookie("username", user, 30);
-         }
-      }
-    }
-    </script> -->
-
-
-<!-- onload="mueveReloj()" -->
-
-
-<body  onload="mueveReloj()">
+<body onload="mueveReloj()">
+    </bodyonload>
+    <div>
+        <h1>AIR ARNAU</h1>
+    </div>
     <ul id="nav">
         <li>
             <a href="#header"><button id="bt1">LOGIN</button></a>
         </li>
-        <li>
-            <a href="#header"><button id="bt2">Registro</button></a>
-        </li>
-        <li>
-            <p id="fecha"></p>
-        </li>
+        <!-- <li>
+            <a href="#section-1" id="hora"></a>
+        </li> -->
         <li>
             <a href="#section-2">
                 <form name="form_reloj">
@@ -71,7 +31,7 @@
             </a>
         </li>
         <li>
-            <p id="response"></p>
+            <a href="#section-3"><i class="fas fa-language"></i></a>
         </li>
         <li>
             <a href="#section-4"><i class="fas fa-building"></i></a>
@@ -94,62 +54,12 @@
                     <div id="errorA" class="small text-danger"></div>
                 </div>
             </div>
-            <button type="button" class="btn btn-info" id="btRegistro">Login</button>
-            <button type="button" class="btn btn-info" id="btlogin">Registro</button>
+            <button type="button" class="btn btn-info" id="btRegistro">Registro</button>
             <!--boto deshabilitat amb disabled-->
+
+
         </form>
     </div>
-
-    <div id="divregistro">
-      <form>
-          <div class="mb-3 mt-3 row">
-              <label for="tuApellidos" class="form-label">Usename:</label>
-              <div class="col-6">
-                  <input type="text" class="form-control col-6" id="username" placeholder="Garcia Garcia">
-                  <div id="errorA" class="small text-danger"></div>
-              </div>
-          </div>
-          <div class="mb-3 mt-3 row">
-              <label for="tuApellidos" class="form-label">Contraseña:</label>
-              <div class="col-6">
-                  <input type="password" id="pwd" name="pwd">
-                  <div id="errorA" class="small text-danger"></div>
-              </div>
-          </div>
-          <button type="button" class="btn btn-info" id="btlogin">Registro</button>
-          <!--boto deshabilitat amb disabled-->
-      </form>
-  </div>
-
-
-    <div id="vuelos">
-        <form>
-            Origen:
-            <select id="origen">
-                <option value="Barcelona">Barcelona</option>
-                <option value="Madrid">Madrid</option>
-              </select>
-            Destino:
-              <select id="destino">
-                <option value="Valencia">Valencia</option>
-                <option value="Madrid" >Madrid</option>
-              </select>
-            Salida:
-              <input type="date" id="salida" name="trip-start"
-                value="fecha" min="fecha" max="2023-12-31">
-            Vuelta:
-                <input type="date" id="vuelta" name="trip-start"
-                value="fecha" min="fecha" max="2023-12-31">
-            Pasajeros:
-                <select id="pasajeros">
-                    <option value="1">1</option>
-                    <option value="2" >2</option>
-                    <option value="3" >3</option>
-                  </select>
-              <button type="button" class="btn btn-info" id="btvuelo">Vuelo</button>
-        </form>
-    </div>
-    <div id="info"></div>
 
 </body>
 

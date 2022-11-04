@@ -32,11 +32,10 @@ html {
     color: black;
 }
 
-body {
+* {
     box-sizing: border-box;
     /* font */
     font-family: "Averta CY", sans-serif;
-    background-image: url("https://astelus.com/wp-content/viajes/las-principales-aerolineas-del-mundo.jpg")
 }
 
 body {
